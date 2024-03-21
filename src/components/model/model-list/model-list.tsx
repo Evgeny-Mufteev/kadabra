@@ -12,7 +12,7 @@ export type ModelsLocationState = {
 
 export const ModelsList = (): JSX.Element => {
 
-  const location = useLocation() as { state: ModelsLocationState };
+  const location: { state: ModelsLocationState } = useLocation();
   const brandName = location.state?.brandName;
 
   const [models, setModels] = useState<Model[]>([]);

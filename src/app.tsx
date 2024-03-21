@@ -12,6 +12,7 @@ const MainPage = lazy(() => import('./pages/main/main'));
 const ModelsPage = lazy(() => import('./pages/model/model'));
 const ModificationsPage = lazy(() => import('./pages/modification/modification'));
 const DevicePage = lazy(() => import('./pages/device/device'));
+const NotFoundPage = lazy(() => import('./pages/not-found/not-found'));
 
 const App = (): JSX.Element => (
   <HelmetProvider>
@@ -46,6 +47,14 @@ const App = (): JSX.Element => (
           <Layout >
             <Suspense fallback={<div>Loading...</div>}>
               <DevicePage />
+            </Suspense>
+          </Layout>
+        }
+        />
+        <Route path={AppRoute.NotFound} element={
+          <Layout >
+            <Suspense fallback={<div>Loading...</div>}>
+              <NotFoundPage />
             </Suspense>
           </Layout>
         }

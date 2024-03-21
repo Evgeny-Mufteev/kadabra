@@ -3,6 +3,7 @@ export enum AppRoute {
   Models = '/models/:brandId',
   Modifications = '/modifications/:modelId',
   Device = '/device/:deviceId',
+  NotFound = '*',
 }
 
 export enum APIRoute {

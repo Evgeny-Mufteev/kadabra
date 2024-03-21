@@ -12,7 +12,7 @@ export type ModificationsLocationState = {
 
 export const ModificationList = (): JSX.Element => {
 
-  const location = useLocation() as { state: ModificationsLocationState };
+  const location: { state: ModificationsLocationState } = useLocation();
   const { brandName, modelName } = location.state;
 
   const [modify, setModify] = useState<Modifications[]>([]);

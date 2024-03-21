@@ -14,9 +14,10 @@ export type DeviceLocationState = {
 
 export const DeviceList = (): JSX.Element => {
 
-  const location = useLocation() as { state: DeviceLocationState };
+  const location: { state: DeviceLocationState } = useLocation();
   const { brandName, modelName, modificationName } = location.state;
 
+  const [isLoading, setIsLoading] = useState(true);
   const [parameters, setParameters] = useState<Parameters[]>([]);
   const { deviceId } = useParams<{ deviceId: string }>();
   const apiClient = createApiClient();
@@ -26,6 +27,7 @@ export const DeviceList = (): JSX.Element => {
       try {
         const fetchedParameters = await fetchParameters(apiClient, Number(deviceId));
         setParameters(fetchedParameters);
+        setIsLoading(false);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Failed to fetch parameters:', error);
@@ -35,8 +37,8 @@ export const DeviceList = (): JSX.Element => {
     loadParameters();
   }, [deviceId, apiClient]);
 
-  if (parameters.length === 0) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return <div>Нет данных</div>;
   }
 
   const firstParam = parameters[0];
