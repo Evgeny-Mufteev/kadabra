@@ -127,8 +127,14 @@ legend {
   padding: 20px 0;
 }
 
+html,
+body {
+  scrollbar-gutter: stable;
+}
+
 .page__main {
   margin: 50px 0;
+  flex-grow: 1;
 }
 
 h2 {
@@ -151,5 +157,6 @@ h2 em {
 
 ul {
   display: flex;
-  column-gap: 30px;
+  flex-wrap: wrap;
+  gap: 30px;
 }
